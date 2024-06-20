@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+// importing all components and hooks
+import { useContext, useEffect, useState } from 'react';
 import './App.css';
+import Home from './Components/Home';
+import { AppContext } from './Context/AppContext';
+
 
 function App() {
+
+  // Accepting fetch function from the AppContext using useContext Hook
+  const { fetchData } = useContext(AppContext);
+
+  // calling fetch function using the useEffect Hook
+  // fetch function will call when the code will run
+  useEffect(() => {
+    fetchData();
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full h-full ">
+            {/* Home components */}
+        <Home />       
+  
     </div>
   );
 }
